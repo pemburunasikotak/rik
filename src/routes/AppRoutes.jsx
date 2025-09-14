@@ -8,11 +8,13 @@ import Contact from "../pages/Contact";
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/services" element={<Services />} />
       <Route path="/innovation" element={<Innovation />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/*" element={<Home />} />
     </Routes>
   );
 }

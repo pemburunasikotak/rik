@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import logo from "../aset/logoaset.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,13 +50,23 @@ export default function Navbar() {
           />
           <span className="text-blue-900 font-bold text-lg">RIK PPNS</span>
         </a>
+
+        {/* Desktop Menu */}
         <div
           className="hidden md:flex space-x-6 text-blue-900 font-semibold items-center relative"
           ref={dropdownRef}
         >
-          <Link to="/home" className="hover:text-blue-600">
+          <NavLink
+            to="/home"
+            className={({ isActive }) =>
+              `hover:text-blue-600 ${
+                isActive ? "border-b-2 border-blue-600 pb-1" : ""
+              }`
+            }
+          >
             Beranda
-          </Link>
+          </NavLink>
+
           <div className="relative">
             <button
               onClick={() =>
@@ -68,17 +79,19 @@ export default function Navbar() {
             {isDropdownOpen === "about" && (
               <div className="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg py-2 z-50">
                 {aboutMenu.map((item) => (
-                  <Link
+                  <HashLink
                     key={item.href}
-                    to={`/about${item.href}`}
+                    smooth
+                    to={`/about${item.href}`} // contoh: /about#about-sambutan
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     {item.label}
-                  </Link>
+                  </HashLink>
                 ))}
               </div>
             )}
           </div>
+
           <div className="relative">
             <button
               onClick={() =>
@@ -93,23 +106,40 @@ export default function Navbar() {
             {isDropdownOpen === "layanan" && (
               <div className="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg py-2 z-50">
                 {layananMenu.map((item) => (
-                  <a
+                  <HashLink
                     key={item.href}
-                    href={item.href}
+                    smooth
+                    to={`/services${item.href}`} // contoh: /about#about-sambutan
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     {item.label}
-                  </a>
+                  </HashLink>
                 ))}
               </div>
             )}
           </div>
-          <Link to="/innovation" className="hover:text-blue-600">
+
+          <NavLink
+            to="/innovation"
+            className={({ isActive }) =>
+              `hover:text-blue-600 ${
+                isActive ? "border-b-2 border-blue-600 pb-1" : ""
+              }`
+            }
+          >
             Produk Inovasi
-          </Link>
-          <Link to="/about" className="hover:text-blue-600">
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `hover:text-blue-600 ${
+                isActive ? "border-b-2 border-blue-600 pb-1" : ""
+              }`
+            }
+          >
             Kontak Kami
-          </Link>
+          </NavLink>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -120,36 +150,65 @@ export default function Navbar() {
       </div>
       {isOpen && (
         <div className="md:hidden bg-white px-4 py-2 space-y-2">
-          <a href="#home" className="block">
+          <NavLink
+            to="/home"
+            className={({ isActive }) =>
+              `block ${isActive ? "border-b-2 border-blue-600 pb-1" : ""}`
+            }
+          >
             Beranda
-          </a>
+          </NavLink>
+
           <details className="block">
             <summary className="cursor-pointer py-2">Tentang Kami</summary>
             <div className="pl-4">
               {aboutMenu.map((item) => (
-                <a key={item.href} href={item.href} className="block py-1">
+                <NavLink
+                  key={item.href}
+                  to={`/about${item.href}`}
+                  className={({ isActive }) =>
+                    `block py-1 ${isActive ? "text-blue-600 font-bold" : ""}`
+                  }
+                >
                   {item.label}
-                </a>
-              ))}
-            </div>
-          </details>
-          <details className="block">
-            <summary className="cursor-pointer py-2">Layanan</summary>
-            <div className="pl-4">
-              {layananMenu.map((item) => (
-                <a key={item.href} href={item.href} className="block py-1">
-                  {item.label}
-                </a>
+                </NavLink>
               ))}
             </div>
           </details>
 
-          <a href="#innovation" className="block">
+          <details className="block">
+            <summary className="cursor-pointer py-2">Layanan</summary>
+            <div className="pl-4">
+              {layananMenu.map((item) => (
+                <NavLink
+                  key={item.href}
+                  to={`/services${item.href}`}
+                  className={({ isActive }) =>
+                    `block py-1 ${isActive ? "text-blue-600 font-bold" : ""}`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </div>
+          </details>
+
+          <NavLink
+            to="/innovation"
+            className={({ isActive }) =>
+              `block ${isActive ? "border-b-2 border-blue-600 pb-1" : ""}`
+            }
+          >
             Produk Inovasi
-          </a>
-          <a href="#contact" className="block">
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `block ${isActive ? "border-b-2 border-blue-600 pb-1" : ""}`
+            }
+          >
             Kontak Kami
-          </a>
+          </NavLink>
         </div>
       )}
     </nav>
