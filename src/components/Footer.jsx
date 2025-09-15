@@ -54,14 +54,14 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo & Deskripsi */}
         <div>
-          <div className="flex items-center space-x-2 mb-4">
+          <Link to="/" className="flex items-center space-x-2 mb-4">
             <img
               src={logo}
               alt="Logo RIK PPNS"
               className="h-10 w-10 object-contain"
             />
             <span className="font-bold text-lg">RIK PPNS</span>
-          </div>
+          </Link>
           <p className="text-sm leading-relaxed">
             RIK PPNS menyediakan layanan aset, pelatihan, dan inovasi untuk
             mendukung kebutuhan pendidikan, riset, dan industri.

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import logo from "../aset/logoaset.png";
 import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,16 +43,14 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md fixed w-full top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="#home" className="flex items-center space-x-2">
+         <Link to="/" className="flex items-center space-x-2">
           <img
             src={logo}
             alt="Logo RIK PPNS"
             className="h-10 w-10 object-contain"
           />
           <span className="text-blue-900 font-bold text-lg">RIK PPNS</span>
-        </a>
-
-        {/* Desktop Menu */}
+        </Link>
         <div
           className="hidden md:flex space-x-6 text-blue-900 font-semibold items-center relative"
           ref={dropdownRef}

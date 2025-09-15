@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import hero1 from "../aset/hero1.png";
 import hero2 from "../aset/hero2.png";
 import hero3 from "../aset/hero3.png";
+import { Link } from "react-router-dom";
 
 const images = [hero1, hero2, hero3];
 
@@ -46,12 +47,12 @@ export default function Home() {
             Kami menyediakan layanan aset, pelatihan, dan inovasi untuk
             mendukung pendidikan, riset, dan industri.
           </p>
-          <a
-            href="/about"
+          <Link
+            to="/about"
             className="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
           >
             Pelajari Lebih Lanjut
-          </a>
+          </Link>
         </div>
 
         {/* Dots Indicator */}
