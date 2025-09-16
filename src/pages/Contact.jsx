@@ -11,7 +11,7 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const whatsappMessage = `Nama: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
-    const whatsappUrl = `https://wa.me/6281234567890?text=${whatsappMessage}`;
+    const whatsappUrl = `https://wa.me/6281249001530?text=${whatsappMessage}`;
     window.location.href = whatsappUrl;
   };
 

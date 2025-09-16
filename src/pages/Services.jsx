@@ -1,15 +1,51 @@
+import PdfReader from "./PdfReader";
+
 export default function Services() {
   const services = [
-    { id: "services-sewa-aset", title: "Layanan Sewa Aset", desc: "Menyediakan fasilitas dan aset kampus untuk mendukung kebutuhan mitra industri dan masyarakat." },
-    { id: "services-sewa-pelatihan", title: "Layanan Sewa Pelatihan", desc: "Berbagai program pelatihan untuk meningkatkan kompetensi SDM." },
-    { id: "services-tenaga", title: "Layanan Tenaga Ahli", desc: "Dukungan tenaga ahli dari dosen dan praktisi profesional di bidangnya." },
-    { id: "services-pengujian", title: "Layanan Pengujian Laboratorium", desc: "Pengujian kualitas, material, dan standar industri menggunakan fasilitas laboratorium." },
-    { id: "services-bisnis", title: "Layanan Bisnis Jasa dan Produksi", desc: "Kerja sama bisnis dalam produksi barang dan jasa berbasis riset dan inovasi." },
-    { id: "services-layanan-bahasa", title: "Layanan Bahasa", desc: "Penerjemahan, kursus bahasa, dan layanan linguistik untuk kebutuhan akademik maupun industri." },
-    { id: "services-politeknik", title: "Layanan Poliklinik", desc: "Pelayanan kesehatan melalui klinik kampus dengan tenaga medis profesional." },
-    { id: "services-layanan-jasa", title: "Layanan Jasa Produksi Laboratorium", desc: "Menyediakan jasa produksi berbasis laboratorium untuk mendukung industri." },
-    { id: "services-informasi-tarif", title: "Informasi Tarif", desc: "Daftar tarif layanan resmi yang dapat diakses oleh masyarakat dan mitra industri." },
+    {
+      id: "services-sewa-aset",
+      title: "Layanan Sewa Aset",
+      desc: "Menyediakan fasilitas dan aset kampus untuk mendukung kebutuhan mitra industri dan masyarakat.",
+    },
+    {
+      id: "services-sewa-pelatihan",
+      title: "Layanan Sewa Pelatihan",
+      desc: "Berbagai program pelatihan untuk meningkatkan kompetensi SDM.",
+    },
+    {
+      id: "services-tenaga",
+      title: "Layanan Tenaga Ahli",
+      desc: "Dukungan tenaga ahli dari dosen dan praktisi profesional di bidangnya.",
+    },
+    {
+      id: "services-pengujian",
+      title: "Layanan Pengujian Laboratorium",
+      desc: "Pengujian kualitas, material, dan standar industri menggunakan fasilitas laboratorium.",
+    },
+    {
+      id: "services-bisnis",
+      title: "Layanan Bisnis Jasa dan Produksi",
+      desc: "Kerja sama bisnis dalam produksi barang dan jasa berbasis riset dan inovasi.",
+    },
+    {
+      id: "services-layanan-bahasa",
+      title: "Layanan Bahasa",
+      desc: "Penerjemahan, kursus bahasa, dan layanan linguistik untuk kebutuhan akademik maupun industri.",
+    },
+    {
+      id: "services-politeknik",
+      title: "Layanan Poliklinik",
+      desc: "Pelayanan kesehatan melalui klinik kampus dengan tenaga medis profesional.",
+    },
+    {
+      id: "services-layanan-jasa",
+      title: "Layanan Jasa Produksi Laboratorium",
+      desc: "Menyediakan jasa produksi berbasis laboratorium untuk mendukung industri.",
+    },
+    // { id: "services-informasi-tarif", title: "Informasi Tarif", desc: "Daftar tarif layanan resmi yang dapat diakses oleh masyarakat dan mitra industri." },
   ];
+
+  const pdfData = "./document.pdf";
 
   return (
     <section id="services" className="pt-20">
@@ -20,8 +56,9 @@ export default function Services() {
             Layanan Kami
           </h1>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Kami menyediakan berbagai layanan untuk mendukung kebutuhan industri, masyarakat, 
-            serta pengembangan ilmu pengetahuan dan teknologi.
+            Kami menyediakan berbagai layanan untuk mendukung kebutuhan
+            industri, masyarakat, serta pengembangan ilmu pengetahuan dan
+            teknologi.
           </p>
         </div>
       </div>
@@ -42,6 +79,12 @@ export default function Services() {
             </div>
           ))}
         </div>
+      </div>
+      <div
+        id={"services-informasi-tarif"}
+        className="container mx-auto px-4 py-16"
+      >
+        <PdfReader pdfData={pdfData} />
       </div>
     </section>
   );
